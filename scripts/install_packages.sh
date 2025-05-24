@@ -24,7 +24,7 @@ SCRIPT_OUTPUT_LOG="$LOG_DIR/script.log"
 : > "$INSTALLED_LOG"
 : > "$FAILED_LOG"
 
-PACKAGES="firefox git less util-linux man-db man-pages iputils net-tools iproute2 zip unzip tar neovim wget curl python3 python3-pip tmux luarocks"
+PACKAGES="firefox git less util-linux man-db man-pages iputils net-tools iproute2 zip unzip tar neovim wget curl python3 python3-pip fastfetch tmux luarocks"
 
 if command -v apt >/dev/null 2>&1; then
 	PKG_MANAGER="apt" 
