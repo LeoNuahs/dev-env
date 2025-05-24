@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+GREEN='\033[32m'
+RED='\033[31m'
+RESET='\033[0m'
+
+if [ -z "$DEV_ENV" ]; then
+	echo -e "${RED}Environment variable DEV_ENV needs to be present.${RESET}"
+	exit 1
+fi
+
+LOG_DIR="$DEV_ENV/scripts/logs/dev_env"
+
+mkdir -p "$LOG_DIR"
+
+SCRIPT_OUTPUT_LOG="$LOG_DIR/script.log"
+
+if [ -e "$SCRIPT_OUTPUT_LOG" ]; then
+	rm "$SCRIPT_OUTPUT_LOG"
+fi
+touch "$SCRIPT_OUTPUT_LOG"
+
+log() {
+	printf "%b\n" "$1" | tee -a "$SCRIPT_OUTPUT_LOG"
+}
+
+update_files() {
+	log "\nUpdating files: \n${RED}From:${RESET} $1 \n${GREEN}To:${RESET} $2"
+	pushd "$1" &> /dev/null
+	configs=`find . -mindepth 1 -maxdepth 1 -type d`
+	for c in $configs; do
+		log "	$c"
+		directory=${2%/}/${c#./}
+
+		log "		${RED}Removing: rm -rf${RESET} $directory"
+		rm -rf $directory
+
+		log "		${GREEN}Copying env: cp${RESET} $c $2"
+		cp -r ./$c $2
+	done
+	popd "$1" &> /dev/null
+}
+
+copy() {
+	log "\nCopying files to $2:"
+	log "	${RED}Removing${RESET} $2"
+	rm $2
+	log "	${GREEN}Copying${RESET} $1 ${GREEN}to${RESET} $2"
+	cp $1 $2
+}
+
+update_files $DEV_ENV/env/.config $HOME/.config
+update_files $DEV_ENV/env/.local $HOME/.local
+
+copy $DEV_ENV/env/.bash_profile $HOME/.bash_profile
+copy $DEV_ENV/env/.bashrc $HOME/.bashrc
+copy $DEV_ENV/env/.local/scripts/dev_env $HOME/.local/scripts/dev_env
+
+hyprctl reload

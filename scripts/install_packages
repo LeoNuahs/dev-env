@@ -23,6 +23,7 @@ SCRIPT_OUTPUT_LOG="$LOG_DIR/script.log"
 
 : > "$INSTALLED_LOG"
 : > "$FAILED_LOG"
+: > "$SCRIPT_OUTPUT_LOG"
 
 PACKAGES="firefox git less util-linux man-db man-pages iputils net-tools iproute2 zip unzip tar neovim wget curl python3 python3-pip fastfetch tmux luarocks"
 

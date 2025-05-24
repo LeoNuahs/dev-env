@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+(
+	cd $HOME/personal/dev
+	./scripts/dev_env
+	hash -r
+)
