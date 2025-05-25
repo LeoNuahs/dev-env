@@ -13,4 +13,5 @@ PS1='[\u@\h \W]\$ '
 fastfetch
 
 # ENVIRONMENT VARIABLES
+export PATH="$PATH:$HOME/.local/scripts"
 export DEV_ENV=$HOME/personal/dev

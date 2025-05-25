@@ -2,6 +2,6 @@
 
 (
 	cd $HOME/personal/dev
-	./scripts/dev_env
+	./scripts/dev-env
 	hash -r
 )

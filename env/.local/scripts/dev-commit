@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+pushd $DEV_ENV
+git add .
+git commit -m "Automated script commit"
+git push
+popd
