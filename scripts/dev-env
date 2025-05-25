@@ -54,6 +54,6 @@ update_files $DEV_ENV/env/.local $HOME/.local
 
 copy $DEV_ENV/env/.bash_profile $HOME/.bash_profile
 copy $DEV_ENV/env/.bashrc $HOME/.bashrc
-copy $DEV_ENV/env/.local/scripts/dev_env $HOME/.local/scripts/dev_env
+copy $DEV_ENV/env/.local/scripts/dev-env $HOME/.local/scripts/dev-env
 
 hyprctl reload
