@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rm -rf $HOME/.config/nvim
+ln -s $DEV_ENV/env/.config/nvim $HOME/.config/nvim
