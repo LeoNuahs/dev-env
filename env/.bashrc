@@ -10,7 +10,7 @@ alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 
 # Display system details
-fastfetch
+sleep 0.1; fastfetch
 
 # ENVIRONMENT VARIABLES
 export PATH="$PATH:$HOME/.local/scripts"

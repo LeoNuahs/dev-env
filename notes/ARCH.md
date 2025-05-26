@@ -33,5 +33,5 @@ fi
 
 # Waybar
 1. `sudo pacman -S waybar`
-2. `sudo pacman -S ttf-jetbrains-mono-nerd ttf-font-awesome`    # font-styles and icons for Waybar
+2. `sudo pacman -S ttf-jetbrains-mono-nerd ttf-font-awesome ttf-nerd-fonts-symbols`    # font-styles and icons for Waybar
 3. `fc-cache -f -v`     # clear font cache
