@@ -14,9 +14,9 @@
     // "cpu",
     // "memory",
     // "custom/docker",
-    "tray",
-    "custom/lock",
-    "custom/power"
+    "tray"
+    // "custom/lock"
+    // "custom/power"
   ],
 
   "hyprland/workspaces": {
