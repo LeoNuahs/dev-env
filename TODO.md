@@ -10,3 +10,4 @@ NOT PRIORITY
 5. configure starship
 6. configure waybar
 7. configure fastfetch
+8. configure hyprlock

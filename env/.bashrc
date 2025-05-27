@@ -18,3 +18,4 @@ sleep 0.1; fastfetch
 # ENVIRONMENT VARIABLES
 export PATH="$PATH:$HOME/.local/scripts"
 export DEV_ENV=$HOME/personal/dev
+export PATH="$PATH:$HOME/go/bin"
