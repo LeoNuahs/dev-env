@@ -1,8 +1,11 @@
-nvim plugins and customization for dev env
+install python and golang
+configure LSP for python and golang
 
 learn tmux
 
-see if I can disable ghostty keybinds and use those to replace tmux keybinds
+install java and LSP for java
+
+see if I can disable kitty keybinds and use those to replace tmux keybinds
 
 install dunst
 
