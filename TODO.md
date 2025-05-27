@@ -5,7 +5,9 @@ learn tmux
 
 install java and LSP for java
 
-see if I can disable kitty keybinds and use those to replace tmux keybinds
+disable kitty keybinds
+
+change tmux keybinds
 
 install dunst
 
