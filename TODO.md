@@ -1,9 +1,4 @@
-install python and golang
-configure LSP for python and golang
-
 learn tmux
-
-install java and LSP for java
 
 disable kitty keybinds
 
