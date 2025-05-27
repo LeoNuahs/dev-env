@@ -1,15 +1,12 @@
-learn tmux
+PRIORITY
 
-disable kitty keybinds
+1. tmux and its keybinds
+2. tmux-sessionizer(?)
+3. install cht.sh
 
-change tmux keybinds
+NOT PRIORITY
 
-install dunst
-
-install rofi wayland
-
-install cht.sh
-
-install tmux-sessionizer?
-
-install VLC media player
+4. install dunst (notification), rofi-wayland, VLC media player
+5. configure starship
+6. configure waybar
+7. configure fastfetch
