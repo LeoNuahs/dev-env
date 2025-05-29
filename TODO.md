@@ -12,12 +12,10 @@ PRIORITY
 
 NOT PRIORITY
 
-4. install dunst (notification), rofi-wayland, VLC media player
+4. VLC media player
 5. configure starship
-6. configure waybar
 7. configure fastfetch
-8. configure hyprlock
-9. figure out how to print screen
+8. configure swaylock
 10. clipboard history(?)
 11. configure laptop lid close behavior
 12. nvim file tree?
