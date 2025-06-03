@@ -22,6 +22,7 @@ fi
 # Audio
 1. `sudo pacman -S pipewire wireplumber pipewire-pulse pipewire-alsa alsa-utils`    # alsamixer TUI
 2. `sudo pacman -S pavucontrol` # pavucontrol GUI
+3. Add `options snd-intel-dspcfg dsp_driver=1` to `/etc/modprobe.d/alsa-base.conf` for audio.
 
 # Bluetooth
 1. `sudo pacman -S bluez bluez-utils bluetui`   # bluetui TUI
