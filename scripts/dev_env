@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+
+GREEN='\033[38;2;0;255;0m'
+RED='\033[38;2;255;0;0m'
+YELLOW='\033[38;2;255;255;0m'
+RESET='\033[0m'
+
+if [ -z "$DEV_ENV" ]; then
+	echo -e "${RED}Environment variable DEV_ENV needs to be present.${RESET}"
+	exit 1
+fi
+
+LOG_DIR="$DEV_ENV/scripts/logs/dev_env"
+
+mkdir -p "$LOG_DIR"
+
+SCRIPT_OUTPUT_LOG="$LOG_DIR/script.log"
+
+if [ -e "$SCRIPT_OUTPUT_LOG" ]; then
+	rm "$SCRIPT_OUTPUT_LOG"
+fi
+touch "$SCRIPT_OUTPUT_LOG"
+
+dry_run="0"
+if [[ $1 == "--dry" ]]; then
+    dry_run="1"
+fi
+
+log() {
+    if [[ $dry_run == "1" ]]; then
+        printf "%b\n" "${YELLOW}[DRY RUN]:${RESET} $1" | tee -a "$SCRIPT_OUTPUT_LOG"
+    else
+        printf "%b\n" "$1" | tee -a "$SCRIPT_OUTPUT_LOG"
+    fi
+}
+
+log "\n${YELLOW}Env Directory: $DEV_ENV${RESET}"
+
+update_files() {
+	log "\nUpdating files: \n${RED}From:${RESET} $1 \n${GREEN}To:${RESET} $2"
+	pushd "$1" &> /dev/null
+	configs=`find . -mindepth 1 -maxdepth 1 -type d`
+	for c in $configs; do
+		log "	$c"
+		directory=${2%/}/${c#./}
+
+		log "		${RED}Removing: rm -rf${RESET} $directory"
+        if [[ $dry_run == "0" ]]; then
+            rm -rf $directory
+        fi
+
+		log "		${GREEN}Copying env: cp${RESET} $c $2"
+        if [[ $dry_run == "0" ]]; then
+            cp -r ./$c $2
+        fi
+	done
+	popd "$1" &> /dev/null
+}
+
+copy() {
+	log "\nCopying files to $2:"
+	log "	${RED}Removing${RESET} $2"
+    if [[ $dry_run == "0" ]]; then
+        rm $2
+    fi
+	log "	${GREEN}Copying${RESET} $1 ${GREEN}to${RESET} $2"
+    if [[ $dry_run == "0" ]]; then
+        cp $1 $2
+    fi
+}
+
+update_files $DEV_ENV/dotfiles/.config $HOME/.config
+
+copy $DEV_ENV/dotfiles/.bash_profile $HOME/.bash_profile
+copy $DEV_ENV/dotfiles/.bashrc $HOME/.bashrc
+copy $DEV_ENV/dotfiles/.tmux.conf $HOME/.tmux.conf
+copy $DEV_ENV/dotfiles/.vimrc $HOME/.vimrc
+
+hyprctl reload
